@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgIf } from '@angular/common';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   imports: [FormsModule, NgIf],
@@ -9,6 +10,8 @@ import { NgIf } from '@angular/common';
 })
 export class LoginComponent {
 
+  constructor(private router :Router) { }
+
   userName = 'in28minutes'
   password = ''
   errorMessage = 'Invalid Credentials'
@@ -16,6 +19,7 @@ export class LoginComponent {
   handleLogin() {
       // console.log(this.userName);
       if(this.userName === 'in28minutes' && this.password === 'dummy') {
+        this.router.navigate(['welcome'])
         this.invalidLogin = false
       }
       else{
